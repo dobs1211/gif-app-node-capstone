@@ -1,0 +1,23 @@
+{
+  "name": "gif-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dobs1211/gif-app-node-capstone.git"
+  },
+  "author": "olga chavez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dobs1211/gif-app-node-capstone/issues"
+  },
+  "homepage": "https://github.com/dobs1211/gif-app-node-capstone#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "unirest": "^0.5.1"
+  }
+}
