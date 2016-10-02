@@ -6,7 +6,7 @@ app.use(express.static('public'));
 
 var getFromApi = function(endpoint, args) {
     var emitter = new events.EventEmitter();
-    unirest.get('https://api.spotify.com/v1/' + endpoint)
+    unirest.get('http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC' + endpoint)
         .qs(args)
         .end(function(response) {
             if (response.ok) {
@@ -21,7 +21,7 @@ var getFromApi = function(endpoint, args) {
 
 var getRelatedFromApi = function(id) {
     var emitter = new events.EventEmitter();
-    unirest.get('https://api.spotify.com/v1/artists/' + id + '/related-artists')
+    unirest.get('http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC')
         .end(function(response) {
             if (response.ok) {
                 emitter.emit('end', response.body);
@@ -35,7 +35,7 @@ var getRelatedFromApi = function(id) {
 
 var getTopTracks = function(relID) {
     var emitter = new events.EventEmitter();
-    unirest.get('https://api.spotify.com/v1/artists/' + relID + '/top-tracks?country=us')
+    unirest.get('http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC')
         .end(function(response) {
             if (response.ok) {
                 emitter.emit('end', response.body);
@@ -112,5 +112,7 @@ app.get('/search/:name', function(req, res) {
     });
 
 });
-
+var express = require('express');
+var app = express();
+app.use(express.static('public'));
 app.listen(process.env.PORT || 8080);
