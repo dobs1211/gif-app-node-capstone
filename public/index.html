@@ -82,7 +82,7 @@ li {
         <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.js"></script>
 
         <script>
-var Spotify = function() {
+var Giph = function() {
     this.searchButton = $('button');
     this.searchButton.click(this.onSearchClicked.bind(this));
     this.searchForm = $('form');
@@ -91,46 +91,45 @@ var Spotify = function() {
     this.result = $('#result');
     this.artistTemplate = Handlebars.compile($("#artist-template").html());
 };
-Spotify.prototype.onSearchClicked = function() {
+Giph.prototype.onSearchClicked = function() {
     var name = this.searchBox.val();
     this.search(name);
     if(!this.result.hasClass('transparent')){
         this.result.toggleClass('transparent');
     }
 };
-Spotify.prototype.onSearchClicked = function() {
+Giph.prototype.onSearchClicked = function() {
     var name = this.searchBox.val();
     this.search(name);
     this.result.toggleClass('transparent');
 };
-Spotify.prototype.onSearchSubmitted = function(event) {
+Giph.prototype.onSearchSubmitted = function(event) {
     event.preventDefault();
     this.searchButton.trigger('click');
 };
-Spotify.prototype.search = function(name) {
+Giph.prototype.search = function(name) {
     var ajax = $.ajax('/search/' + name, {
         type: 'GET',
         dataType: 'json'
     });
     ajax.done(this.onSearchDone.bind(this));
 };
-Spotify.prototype.onSearchDone = function(artist) {
+Giph.prototype.onSearchDone = function(artist) {
     var result = $(this.artistTemplate(artist));
     this.result.empty().append(result);
     this.result.toggleClass('transparent');
 };
 $(document).ready(function() {
-    var app = new Spotify();
+    var app = new Giph();
 });
         </script>
     </head>
     <body>
         <form class="pure-form">
             <input type="text">
-            <button type="button" class="pure-button pure-button-primary">Get Some Gifs!</button>
+            <button type="button" class="pure-button pure-button-primary">Get Some Giphs!</button>
          </form>
-         <p>Hello World</p>
-        <div id="result">
+         <div id="result">
         </div>
 
 
