@@ -8,10 +8,10 @@ app.use(express.static('public'));
 //first API call to get the giph from search
 var getFromApi = function(endpoint, args) {
     var emitter = new events.EventEmitter();
-    unirest.get('https://crossorigin.me/http://api.giphy.com/v1/gifs/search?q=' + args + '&api_key=dc6zaTOxFJmzC')
+        unirest.get('https://crossorigin.me/http://api.giphy.com/v1/gifs/search?q=' + args + '&api_key=dc6zaTOxFJmzC')
             .end(function(response) {
             if (response.ok) {
-                console.log(response);
+                console.log(response.JSON);
                 emitter.emit('end', response.body);
             }
             else {
@@ -22,7 +22,7 @@ var getFromApi = function(endpoint, args) {
         
     return emitter;
 };
-var app = express();
+//var app = express();
 app.use(express.static('public'));
 app.get('/search/:name', function(req, res) {
     var searchReq = getFromApi(req.params.name);
@@ -38,3 +38,5 @@ app.get('/search/:name', function(req, res) {
 });
 
 app.listen(process.env.PORT || 8080);
+
+
