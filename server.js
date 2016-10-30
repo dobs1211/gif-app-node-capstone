@@ -1,12 +1,13 @@
 var unirest = require('unirest');
-var request = require('superagent');
+//var request = require('superagent');
 var express = require('express');
 var events = require('events');
 var app = express();
+//var searchResults = 
 app.use(express.static('public'));
 
 //first API call to get the giph from search
-var getFromApi = function(endpoint, args) {
+var getFromApi = function(args) {
     console.log(args);
     var emitter = new events.EventEmitter();
         unirest.get('https://crossorigin.me/http://api.giphy.com/v1/gifs/search?q=' + args + '&api_key=dc6zaTOxFJmzC')
